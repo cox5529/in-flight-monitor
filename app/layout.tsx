@@ -1,12 +1,19 @@
+import mapboxgl from 'mapbox-gl';
 import type { AppProps } from 'next/app';
-import Head from 'next/head';
+
+import MapboxSetup from './MapboxSetup';
+import PwaSetup from './PwaSetup';
 
 import '../styles/globals.css';
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <>
-      <Head>
+    <html lang='en'>
+      <head>
         <meta charSet='utf-8' />
         <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
         <meta
@@ -180,8 +187,18 @@ export default function App({ Component, pageProps }: AppProps) {
           media='(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)'
         />
         <meta name='theme-color' content='#031926' />
-      </Head>
-      <Component {...pageProps} />
-    </>
+
+        <link
+          href='https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css'
+          rel='stylesheet'
+        />
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js'></script>
+      </head>
+      <body>
+        <MapboxSetup></MapboxSetup>
+        <PwaSetup></PwaSetup>
+        <div>{children}</div>
+      </body>
+    </html>
   );
 }
