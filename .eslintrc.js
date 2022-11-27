@@ -13,8 +13,16 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    indent: ['warn', 2, { offsetTernaryExpressions: true, ignoredNodes: ['ConditionalExpression *'] }],
+    indent: [
+      'warn',
+      2,
+      {
+        offsetTernaryExpressions: true,
+        ignoredNodes: ['ConditionalExpression *'],
+      },
+    ],
     'linebreak-style': ['error', 'unix'],
+    '@typescript-eslint/no-empty-function': 'off',
     quotes: ['warn', 'single'],
     semi: ['warn', 'always'],
   },
