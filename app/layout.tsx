@@ -1,6 +1,3 @@
-import mapboxgl from 'mapbox-gl';
-import type { AppProps } from 'next/app';
-
 import MapboxSetup from './MapboxSetup';
 import PwaSetup from './PwaSetup';
 
@@ -192,7 +189,6 @@ export default function RootLayout({
           href='https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css'
           rel='stylesheet'
         />
-        <script src='https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js'></script>
       </head>
       <body>
         <MapboxSetup></MapboxSetup>

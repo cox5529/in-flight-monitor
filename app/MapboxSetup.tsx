@@ -4,9 +4,7 @@ import React from 'react';
 
 import mapboxgl from 'mapbox-gl';
 
-type Props = {};
-
-const MapboxSetup = (props: Props) => {
+const MapboxSetup = () => {
   mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX!;
   return <></>;
 };
