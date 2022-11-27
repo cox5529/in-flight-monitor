@@ -38,3 +38,7 @@ next-env.d.ts
 # firebase
 *.log
 .firebase
+
+# pwa
+public/sw.js
+public/workbox-*.js
