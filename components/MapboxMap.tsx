@@ -4,11 +4,12 @@ import React, { useEffect, useState } from 'react';
 
 import mapboxgl from 'mapbox-gl';
 
-type Props = { location?: GeolocationCoordinates };
+import MapboxLocationMarker from './MapboxLocationMarker';
+
+type Props = { };
 
 const MapboxMap = (props: Props) => {
-  const [map, setMap] = useState<mapboxgl.Map | null>(null);
-  const [userMarker, setUserMarker] = useState<mapboxgl.Marker | null>(null);
+  const [map, setMap] = useState<mapboxgl.Map | undefined>();
 
   useEffect(() => {
     const map = new mapboxgl.Map({
@@ -19,26 +20,12 @@ const MapboxMap = (props: Props) => {
     setMap(map);
   }, []);
 
-  useEffect(() => {
-    if (!props.location || !map) {
-      return;
-    }
-
-    if (!userMarker) {
-      const marker = new mapboxgl.Marker().setLngLat([0, 0]).addTo(map);
-      setUserMarker(marker);
-    }
-  }, [map, props.location]);
-
-  useEffect(() => {
-    if (!props.location || !userMarker) {
-      return;
-    }
-
-    userMarker.setLngLat([props.location.longitude, props.location.latitude]);
-  }, [userMarker, props.location]);
-
-  return <div id='map' className='h-full'></div>;
+  return (
+    <>
+      <div id='map' className='h-full'></div>
+      <MapboxLocationMarker map={map} />
+    </>
+  );
 };
 
 export default MapboxMap;
