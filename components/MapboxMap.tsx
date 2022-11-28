@@ -6,9 +6,7 @@ import mapboxgl from 'mapbox-gl';
 
 import MapboxLocationMarker from './MapboxLocationMarker';
 
-type Props = { };
-
-const MapboxMap = (props: Props) => {
+const MapboxMap = () => {
   const [map, setMap] = useState<mapboxgl.Map | undefined>();
 
   useEffect(() => {
