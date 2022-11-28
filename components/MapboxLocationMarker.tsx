@@ -65,7 +65,7 @@ const MapboxLocationMarker = ({ map }: Props) => {
       const newPoint = calculatePointGivenDistanceAndDirection(
         position.coords.latitude,
         position.coords.longitude,
-        (position.coords.speed ?? 1000) / 60,
+        (position.coords.speed ?? 0) / 60,
         position.coords.heading ?? 0
       );
 
