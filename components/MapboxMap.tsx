@@ -1,27 +1,26 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-import mapboxgl from 'mapbox-gl';
+import { LngLatBoundsLike } from 'mapbox-gl';
+import { Map } from 'react-map-gl';
 
-import MapboxLocationMarker from './MapboxLocationMarker';
+import MapboxMapLocationMarker from './MapboxMapLocationMarker';
+import MapboxMapRoute from './MapboxMapRoute';
+
+const defaultMapBounds: LngLatBoundsLike = [-130, 20, -60, 50];
 
 const MapboxMap = () => {
-  const [map, setMap] = useState<mapboxgl.Map | undefined>();
-
-  useEffect(() => {
-    const map = new mapboxgl.Map({
-      container: 'map',
-      style: process.env.NEXT_PUBLIC_MAPBOX_STYLE,
-    });
-
-    setMap(map);
-  }, []);
-
   return (
     <>
-      <div id='map' className='h-full'></div>
-      <MapboxLocationMarker map={map} />
+      <Map
+        mapStyle={process.env.NEXT_PUBLIC_MAPBOX_STYLE}
+        mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX}
+        initialViewState={{ bounds: defaultMapBounds }}
+      >
+        <MapboxMapLocationMarker />
+        <MapboxMapRoute route={['KLIT', 'KATL', 'KJFK']} />
+      </Map>
     </>
   );
 };

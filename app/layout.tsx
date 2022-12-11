@@ -1,4 +1,3 @@
-import MapboxSetup from './MapboxSetup';
 import PwaSetup from './PwaSetup';
 
 import '../styles/globals.css';
@@ -191,7 +190,6 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <MapboxSetup></MapboxSetup>
         <PwaSetup></PwaSetup>
         <div>{children}</div>
       </body>
